@@ -1,12 +1,10 @@
-package com.cg.ams;
+package com.cg.ams.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -17,15 +15,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="ASSIGN_SUBJECT1")
-public class subjectEntity{
+public class SubjectEntity{
 
 	
 	@Id
 	@Column(name="SUBJECT_ID")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	private Long subjectId;
 	@Column(name="COURSE_ID")
-	private long courseId;
+	private Long courseId;
 	@Column(name="COURSE_NAME")
 	private String courseName;
 	@Column(name="NAME")
@@ -37,6 +35,25 @@ public class subjectEntity{
 	@Column(name="DESCRIPTION")
 	private String description;
 	
+	
+	public Long getId() {
+		return subjectId;
+	}
+	public void setId(Long subjectId) {
+		this.subjectId = subjectId;
+	}
+	public Long getCourseId() {
+		return courseId;
+	}
+	public void setCourseId(Long courseId) {
+		this.courseId = courseId;
+	}
+	public String getCourseName() {
+		return courseName;
+	}
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
 	public String getName() {
 		return name;
 	}
@@ -58,12 +75,9 @@ public class subjectEntity{
 	public String getDescription() {
 		return description;
 	}
-	/*
-	 * creating ToString method
-	 */
 	@Override
 	public String toString() {
-		return "SubjectEntity [id=" + id + ", courseId=" + courseId + ", courseName=" + courseName + ", name=" + name
+		return "SubjectEntity [id=" + subjectId + ", courseId=" + courseId + ", courseName=" + courseName + ", name=" + name
 				+ ", subjectCode=" + subjectCode + ", semester=" + semester + ", description=" + description + "]";
 	}
 	public void setDescription(String string) {

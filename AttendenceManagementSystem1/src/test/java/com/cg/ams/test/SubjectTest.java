@@ -25,7 +25,7 @@ import com.cg.ams.service.SubjectServiceImpl;
 public class SubjectTest {
 	@InjectMocks
 	private SubjectServiceImpl subjectService;
-	
+	// welcome 
 	@Mock
 	private SubjectDao subjectDao;
 	

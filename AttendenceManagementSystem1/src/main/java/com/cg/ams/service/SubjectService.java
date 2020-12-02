@@ -2,6 +2,7 @@ package com.cg.ams.service;
 
 import java.util.List;
 
+import com.cg.ams.Exception.RecordNotFoundException;
 import com.cg.ams.entity.SubjectEntity;
 /*
  * @author NagaRaj
@@ -12,11 +13,13 @@ public interface SubjectService {
 
 	public void update(SubjectEntity entity);
 
-	public List<SubjectEntity> findAllsubjects();
+	public void deleteBySubjectId(Long subjectId) throws RecordNotFoundException;
 
-	public void deleteBySubjectId(Long subjectId);
+	public SubjectEntity getSubjectById(Long subjectId) throws RecordNotFoundException;
 
-	public SubjectEntity findBySubjectId(Long subjectId);
+	
+
+	public List<SubjectEntity> findAllSubjects() throws RecordNotFoundException;
 
 	
 

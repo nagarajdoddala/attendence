@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.sun.istack.NotNull;
+
 /**
  * 
  * @author NagaRaj
@@ -20,26 +22,36 @@ public class SubjectEntity{
 	
 	@Id
 	@Column(name="SUBJECT_ID")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	//@ID
+	//sequenceGenerator(name = "mySeqGen", sequenceName = "mysql", intialvalue = 1, allocationSize = 50)
+	//generatedValue(generator = "mySeqgen")
 	private Long subjectId;
-	@Column(name="COURSE_ID")
+	@NotNull
+	@Column(name="COURSE_ID", length = 10)
 	private Long courseId;
-	@Column(name="COURSE_NAME")
+	@NotNull
+	@Column(name="COURSE_NAME", length = 10)
 	private String courseName;
-	@Column(name="NAME")
+	@NotNull
+	@Column(name="NAME", length = 10)
 	private String name;
-	@Column(name="SUBJECTCODE")
+	@NotNull
+	@Column(name="SUBJECTCODE",length = 10)
 	private String subjectCode;
-	@Column(name="SEMESTER")
+	@NotNull
+	@Column(name="SEMESTER", length = 20)
 	private String semester;
-	@Column(name="DESCRIPTION")
+	@NotNull
+	@Column(name="DESCRIPTION", length = 20)
 	private String description;
-	
-	
-	public Long getId() {
+	/*
+	 * creating getters and setters
+	 */
+	public Long getSubjectId() {
 		return subjectId;
 	}
-	public void setId(Long subjectId) {
+	public void setSubjectId(Long subjectId) {
 		this.subjectId = subjectId;
 	}
 	public Long getCourseId() {
@@ -75,15 +87,43 @@ public class SubjectEntity{
 	public String getDescription() {
 		return description;
 	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	@Override
 	public String toString() {
-		return "SubjectEntity [id=" + subjectId + ", courseId=" + courseId + ", courseName=" + courseName + ", name=" + name
-				+ ", subjectCode=" + subjectCode + ", semester=" + semester + ", description=" + description + "]";
+		return "SubjectEntity [subjectId=" + subjectId + ", courseId=" + courseId + ", courseName=" + courseName
+				+ ", name=" + name + ", subjectCode=" + subjectCode + ", semester=" + semester + ", description="
+				+ description + "]";
 	}
-	public void setDescription(String string) {
-		
-		
+	 /*
+	  * constructor generation
+	  */
+	public SubjectEntity(Long courseId, String courseName, String name, String subjectCode, String semester,
+			String description) {
+		super();
+		this.courseId = courseId;
+		this.courseName = courseName;
+		this.name = name;
+		this.subjectCode = subjectCode;
+		this.semester = semester;
+		this.description = description;
 	}
+	public SubjectEntity() {
+		// TODO Auto-generated constructor stub
+	}
+	public SubjectEntity(Long subjectId, Long courseId, String courseName, String name, String subjectCode,
+			String semester, String description) {
+		super();
+		this.subjectId = subjectId;
+		this.courseId = courseId;
+		this.courseName = courseName;
+		this.name = name;
+		this.subjectCode = subjectCode;
+		this.semester = semester;
+		this.description = description;
+	}
+	
 	
 	
 	

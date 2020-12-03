@@ -1,4 +1,4 @@
-package com.cg.ams.Exception;
+package com.cg.ams.exception;
 
 
 public class RecordNotFoundException extends Exception

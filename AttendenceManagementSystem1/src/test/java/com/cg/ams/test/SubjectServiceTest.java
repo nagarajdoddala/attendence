@@ -16,20 +16,19 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.cg.ams.Exception.RecordNotFoundException;
 import com.cg.ams.entity.SubjectEntity;
+import com.cg.ams.exception.RecordNotFoundException;
 import com.cg.ams.repository.SubjectDao;
 import com.cg.ams.service.SubjectServiceImpl;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class SubjectTest {
+public class SubjectServiceTest {
 	@InjectMocks
 	private SubjectServiceImpl subjectService;
-	// welcome 
 	@Mock
 	private SubjectDao subjectDao;
 	
-	@SuppressWarnings("deprecation")
+	
 	@BeforeAll
 	public void init() {
 		MockitoAnnotations.openMocks(this);

@@ -14,12 +14,7 @@ import com.cg.ams.util.QueryUtil;
 public interface SubjectDao extends JpaRepository<SubjectEntity, Long> {
 
 	// Query to find record of subject by id
-		@Query(QueryUtil.VIEW_SUB_BY_ID) // query util
-		public List <SubjectEntity> findBySubjectId(Long subjectId);
-	
-	
-	
-	
-	
+	@Query(QueryUtil.VIEW_SUB_BY_ID)
+	public List<SubjectEntity> findBySubjectId(Long subjectId);
 
 }

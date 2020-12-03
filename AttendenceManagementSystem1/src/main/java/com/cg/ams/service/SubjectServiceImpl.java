@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cg.ams.Exception.RecordNotFoundException;
 import com.cg.ams.entity.SubjectEntity;
+import com.cg.ams.exception.RecordNotFoundException;
 import com.cg.ams.repository.SubjectDao;
 import com.cg.ams.util.ErrorMessageUtil;
 
@@ -21,37 +21,36 @@ public class SubjectServiceImpl implements SubjectService {
 
 	// saving a specific record by using the method save() of CrudRepository
 	@Override
-	public Long add(SubjectEntity entity) {
-		subjectDao.save(entity);
-		return entity.getCourseId();	
-		}
+	public Long add(SubjectEntity subjectEntity) {
+		subjectDao.save(subjectEntity);
+		return subjectEntity.getCourseId();
+	}
 
 	// updating a record
 	@Override
-	public void update(SubjectEntity entity) {
-		subjectDao.save(entity);
+	public void update(SubjectEntity subjectEntity) {
+		subjectDao.save(subjectEntity);
 	}
 
 	// deleting a specific record by using the method deleteById() of CrudRepository
-	// deleting a specific record by using the method deleteById() of CrudRepository
-		@Override
-		public void deleteBySubjectId(Long subjectId) throws RecordNotFoundException {
-			if (subjectDao.findById(subjectId) == null) {
-				throw new RecordNotFoundException(ErrorMessageUtil.SUB_RECORD_NOT_FOUND);
-			}
-			subjectDao.deleteById(subjectId);
+	@Override
+	public void deleteBySubjectId(Long subjectId) throws RecordNotFoundException {
+		if (subjectDao.findById(subjectId) == null) {
+			throw new RecordNotFoundException(ErrorMessageUtil.SUB_RECORD_NOT_FOUND);
 		}
+		subjectDao.deleteById(subjectId);
+	}
 
 	// getting a specific record by using the method findAll() of CrudRepository
 	@Override
 	public List<SubjectEntity> findAllSubjects() throws RecordNotFoundException {
 		List<SubjectEntity> subject = new ArrayList<SubjectEntity>();
-		subjectDao.findAll().forEach(subject1 -> subject.add( subject1));
+		subjectDao.findAll().forEach(subject1 -> subject.add(subject1));
 		return subject;
-		
+
 	}
 
-    // getting a specific record by using the method findAll() of CrudRepository
+	// getting a specific record by using the method findAll() of CrudRepository
 	public SubjectEntity getSubjectById(Long subjectId) throws RecordNotFoundException {
 		Optional<SubjectEntity> subject = subjectDao.findById(subjectId);
 		if (subject.isEmpty()) {
@@ -59,14 +58,5 @@ public class SubjectServiceImpl implements SubjectService {
 		}
 		return subject.get();
 	}
-
-	
-	
-
-
-	
-
-
-	
 
 }

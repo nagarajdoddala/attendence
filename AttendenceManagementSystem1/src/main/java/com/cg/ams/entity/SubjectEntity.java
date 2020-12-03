@@ -23,9 +23,6 @@ public class SubjectEntity{
 	@Id
 	@Column(name="SUBJECT_ID")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	//@ID
-	//sequenceGenerator(name = "mySeqGen", sequenceName = "mysql", intialvalue = 1, allocationSize = 50)
-	//generatedValue(generator = "mySeqgen")
 	private Long subjectId;
 	@NotNull
 	@Column(name="COURSE_ID", length = 10)
@@ -110,7 +107,7 @@ public class SubjectEntity{
 		this.description = description;
 	}
 	public SubjectEntity() {
-		// TODO Auto-generated constructor stub
+
 	}
 	public SubjectEntity(Long subjectId, Long courseId, String courseName, String name, String subjectCode,
 			String semester, String description) {

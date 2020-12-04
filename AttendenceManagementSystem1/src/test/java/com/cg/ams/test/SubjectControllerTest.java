@@ -14,6 +14,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.ResponseEntity;
 
 import com.cg.ams.controller.SubjectController;
 import com.cg.ams.entity.SubjectEntity;
@@ -73,7 +74,21 @@ public class SubjectControllerTest {
 		
 		assertEquals(112, subjectEntity.getCourseId());
 	}
-	
+	@Test
+public void viewSubjectByIdTest() throws RecordNotFoundException {
+		SubjectEntity subjectEntity = new SubjectEntity();
+		subjectEntity.setCourseId((long) 111);
+		subjectEntity.setCourseName("Ece");
+		subjectEntity.setSemester("VIII");
+		subjectEntity.setName("Teja");
+		subjectEntity.setSubjectId((long) 1695);
+		subjectEntity.setSubjectCode("16uecs02");
+		Long subjectId = subjectEntity.getSubjectId();
+		when(subjectController.getSubjectById(subjectId).getBody()).thenReturn(subjectEntity);
+		ResponseEntity<SubjectEntity> viewSubject = subjectController.getSubjectById(subjectId);
+		assertEquals(111, viewSubject.getBody().getCourseId());
+
+	}
 @Test
 public void viewSubjectListTest() throws RecordNotFoundException {
 	List<SubjectEntity> subjectList = new ArrayList<SubjectEntity>();
